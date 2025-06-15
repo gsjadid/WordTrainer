@@ -1,15 +1,12 @@
 let vocabData = [];
 let currentIndex = 0;
 let practicedIndices = new Set();
-let correct = 0, incorrect = 0;
 
 const germanEl = document.getElementById("germanWord");
 const englishEl = document.getElementById("englishTranslation");
 const toggleBtn = document.getElementById("toggleAnswer");
 const newBtn = document.getElementById("newWord");
 const progressEl = document.getElementById("progress");
-const correctEl = document.getElementById("correct");
-const incorrectEl = document.getElementById("incorrect");
 
 async function loadVocab() {
   try {
@@ -57,13 +54,6 @@ function updateProgress() {
 }
 
 toggleBtn.addEventListener("click", toggleAnswer);
-newBtn.addEventListener("click", () => {
-  const isCorrect = confirm("Did you get it right?");
-  if (isCorrect) correct++;
-  else incorrect++;
-  correctEl.textContent = correct;
-  incorrectEl.textContent = incorrect;
-  showNewWord();
-});
+newBtn.addEventListener("click", showNewWord);
 
 loadVocab();
